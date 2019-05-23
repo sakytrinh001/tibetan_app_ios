@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNoteContentViewController">
+            <connections>
+                <outlet property="textView" destination="dh7-T7-k2p" id="eiB-td-THV"/>
+                <outlet property="toolBar" destination="sp7-rQ-ndY" id="HTy-iQ-yqZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-T7-k2p">
+                    <rect key="frame" x="0.0" y="27" width="375" height="603"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sp7-rQ-ndY">
+                    <rect key="frame" x="0.0" y="630" width="375" height="44"/>
+                    <items/>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dh7-T7-k2p" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="KIH-Tv-ZLB"/>
+                <constraint firstItem="dh7-T7-k2p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ch5-nY-zfW"/>
+                <constraint firstItem="dh7-T7-k2p" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" constant="-64" id="fdX-1J-cgL"/>
+                <constraint firstItem="dh7-T7-k2p" firstAttribute="trailing" secondItem="sp7-rQ-ndY" secondAttribute="trailing" id="nDh-AW-wNL"/>
+                <constraint firstItem="dh7-T7-k2p" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="pdJ-89-shf"/>
+                <constraint firstItem="dh7-T7-k2p" firstAttribute="leading" secondItem="sp7-rQ-ndY" secondAttribute="leading" id="sDA-Fh-KlK"/>
+                <constraint firstItem="dh7-T7-k2p" firstAttribute="bottom" secondItem="sp7-rQ-ndY" secondAttribute="top" id="xRj-Fo-0h0"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "d82306b4-c4a2-11e5-94fa-57a6b2ab4da8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "d82306b4-c4a2-11e5-94fa-57a6b2ab4da8" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "d82306b4-c4a2-11e5-94fa-57a6b2ab4da8" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "CAA4E908-9DEC-486F-BAA8-6AC25F73532C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "d82306b4-c4a2-11e5-94fa-57a6b2ab4da8" : "Tibertan\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NewTibetanBible",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NewTibetanBible.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/svn.dragonholding.nl\/repos\/tib001",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "d82306b4-c4a2-11e5-94fa-57a6b2ab4da8"
+    }
+  ]
+}
