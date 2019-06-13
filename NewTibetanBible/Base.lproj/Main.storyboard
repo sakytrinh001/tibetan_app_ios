@@ -51,7 +51,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ke3-aX-zge">
                                         <rect key="frame" x="4" y="21" width="70" height="46"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_splash_tibertan" translatesAutoresizingMaskIntoConstraints="NO" id="c66-IA-nQC">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topnavicon" translatesAutoresizingMaskIntoConstraints="NO" id="c66-IA-nQC">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="46"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -819,11 +819,11 @@
     </scenes>
     <resources>
         <image name="black-circle-icon" width="46" height="46"/>
-        <image name="logo_splash_tibertan" width="1024" height="788"/>
         <image name="logo_splash_tibertan.tif" width="1024" height="788"/>
         <image name="orange-icon" width="46" height="46"/>
         <image name="search-icon" width="128" height="128"/>
         <image name="setting-icon" width="32" height="32"/>
+        <image name="topnavicon" width="5692" height="5177"/>
         <image name="user" width="512" height="512"/>
         <image name="white-circle-icon" width="46" height="46"/>
     </resources>
