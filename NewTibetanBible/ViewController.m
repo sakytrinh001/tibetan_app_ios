@@ -242,7 +242,7 @@ NSString *const kCurrentChapterName = @"CurrentChapterName";
                     usfmTag = nil;
                 }
                 
-                self.listBookName[j] = bookModelObj.shortenedName;
+                self.listBookName[j] = bookModelObj.name;
                 self.listBookNameTitle[j] = bookModelObj.name;
                 self.listBookChapter[j] = bookModelObj.chapter;
                 self.listBookChapterLabel[j] = bookModelObj.chapterLabel;

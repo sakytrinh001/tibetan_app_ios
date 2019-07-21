@@ -94,8 +94,10 @@
             NSString *verseNumber = [self excludeVerseFromLine:line];
             NSString *result;
             result = [NSString stringWithFormat:@"<span id='verse-%d-%d-%ld'>%@</span>", bookId, currentChapter,(long)[verseNumber integerValue], line];
+            NSLog(@"result: %@", result);
             return result;
         }
+        NSLog(@"result_line: %@", line);
         return line;
     } else {
         if ([line rangeOfString:@"verse"].location == NSNotFound) {
@@ -109,12 +111,21 @@
             NSString *jsOpenReadFooter = [[NSString alloc] initWithFormat:@"<script>document.getElementById('%@').onclick = function() {if (document.getElementById('%@').className == 'hidden') {document.getElementById('%@').className = 'visible';}else {document.getElementById('%@').className = 'hidden';}}; </script>",footerButton, footerContentId, footerContentId, footerContentId];
             
             strFooterToEnd = [line substringFromIndex:(endFooter.location + USFM_FOOTER_END.length)];
-            if ([strFooterToEnd rangeOfString:@"\\f"].location != NSNotFound) {
-                NSCharacterSet *removeCharecter = [NSCharacterSet characterSetWithCharactersInString:@"\\ft+"];
-                NSString *strSearch = [[[line substringFromIndex:(endFooter.location + USFM_FOOTER_END.length)] componentsSeparatedByCharactersInSet:removeCharecter] componentsJoinedByString:@""];
-                strFooterToEnd = [strSearch stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            if ([strFooterToEnd rangeOfString: @"གཙོ་བོ་ཞེས་པར་མ་ཕྱི་ལས་ཁོང་ཞེས་ཁོ་ན༌མཐོང༌།"].location != NSNotFound){
+                NSLog(@"result 1: %@", strFooterToEnd);
             }
-            NSString *result = [NSString stringWithFormat:@"<span id='verse-%d-%d-%ld'> %@ <button id='%@' style='bottom: 12px; border-radius: 10px;height: 15px;text-align: center;position: relative;'><span style='display: inline-block;bottom: -2px; right: 0;position: absolute;left: 0.0px; font-size: 30px;border-radius: 10px;'>..</span></button><div class='hidden' id = '%@' style='font-size: 12px;display: none;'> <div style='width:250px;height:1px;background-color:#000000; margin-bottom: 5px'></div> <div style='display: inline-block;  width: 15px; height: 15px; border-radius: 50px; border: 1px solid #c3c3c3;'><span style='bottom: 7px; right: 0;left: 4.0px; font-size: 14px;text-align: center;position: relative;'>1</span></div> %@ </div> %@ </span> %@", bookId, currentChapter, (long)[verseNumber integerValue],strBeginToFooterBegin,footerButton, footerContentId, strFooter,strFooterToEnd, jsOpenReadFooter];
+            NSString *result = @"";
+            if ([strFooterToEnd rangeOfString:@"\\f"].location != NSNotFound) {
+                NSRange endFooter1  =  [strFooterToEnd rangeOfString:USFM_FOOTER_END];
+                NSRange beginFooter1 = [strFooterToEnd rangeOfString: USFM_FOOTER_BEGIN];
+                NSString *strFooter1 = [self getFooterContent:strFooterToEnd];
+                NSString *strFooterToEnd1 = [line substringFromIndex:(endFooter1.location + USFM_FOOTER_END.length)];
+                NSString *strBeginToFooterBegin1 = [strFooterToEnd substringToIndex:(beginFooter1.location)];
+                result = [NSString stringWithFormat:@"<span id='verse-%d-%d-%ld'> %@ <button id='%@' style='bottom: 12px; border-radius: 10px;height: 15px;text-align: center;position: relative;'><span style='display: inline-block;bottom: -2px; right: 0;position: absolute;left: 0.0px; font-size: 30px;border-radius: 10px;'>..</span></button><div class='hidden' id = '%@' style='font-size: 12px;display: none;'> <div style='width:250px;height:1px;background-color:#000000; margin-bottom: 5px'></div> <div style='display: inline-block;  width: 15px; height: 15px; border-radius: 50px; border: 1px solid #c3c3c3;'><span style='bottom: 7px; right: 0;left: 4.0px; font-size: 14px;text-align: center;position: relative;'>1</span></div> %@ </div> %@ </span> %@<span id='verse-%d-%d-%ld'> %@ <button id='%@' style='bottom: 12px; border-radius: 10px;height: 15px;text-align: center;position: relative;'><span style='display: inline-block;bottom: -2px; right: 0;position: absolute;left: 0.0px; font-size: 30px;border-radius: 10px;'>..</span></button><div class='hidden' id = '%@' style='font-size: 12px;display: none;'> <div style='width:250px;height:1px;background-color:#000000; margin-bottom: 5px'></div> <div style='display: inline-block;  width: 15px; height: 15px; border-radius: 50px; border: 1px solid #c3c3c3;'><span style='bottom: 7px; right: 0;left: 4.0px; font-size: 14px;text-align: center;position: relative;'>1</span></div> %@ </div> %@ </span> %@", bookId, currentChapter, (long)[verseNumber integerValue],strBeginToFooterBegin,footerButton, footerContentId, strFooter,@"", jsOpenReadFooter, bookId, currentChapter, (long)[verseNumber integerValue],strBeginToFooterBegin1,footerButton, footerContentId, strFooter1,strFooterToEnd1, jsOpenReadFooter];
+            }else{
+                result = [NSString stringWithFormat:@"<span id='verse-%d-%d-%ld'> %@ <button id='%@' style='bottom: 12px; border-radius: 10px;height: 15px;text-align: center;position: relative;'><span style='display: inline-block;bottom: -2px; right: 0;position: absolute;left: 0.0px; font-size: 30px;border-radius: 10px;'>..</span></button><div class='hidden' id = '%@' style='font-size: 12px;display: none;'> <div style='width:250px;height:1px;background-color:#000000; margin-bottom: 5px'></div> <div style='display: inline-block;  width: 15px; height: 15px; border-radius: 50px; border: 1px solid #c3c3c3;'><span style='bottom: 7px; right: 0;left: 4.0px; font-size: 14px;text-align: center;position: relative;'>1</span></div> %@ </div> %@ </span> %@", bookId, currentChapter, (long)[verseNumber integerValue],strBeginToFooterBegin,footerButton, footerContentId, strFooter,strFooterToEnd, jsOpenReadFooter];
+                
+            }
             return result;
         }else{
             NSString *strBeginToFooterBegin = [line substringToIndex:(beginFooter.location)];
@@ -127,6 +138,7 @@
         
             strFooterToEnd = [line substringFromIndex:(endFooter.location + USFM_FOOTER_END.length)];
             NSString *result = [NSString stringWithFormat:@"%@ <button id='%@' style='bottom: 10px; border-radius: 12px;height: 15px;text-align: center;position: relative;'><span style='display: inline-block;bottom: -2px; right: 0;position: absolute;left: 0.0px;font-size: 30px;border-radius: 10px;'>..</span></button> <div class='hidden' id = '%@' style='font-size: 12px;display: none;'> <div style='width:250px;height:1px;background-color:#000000; margin-bottom: 5px'></div> <div style='display: inline-block;  width: 15px; height: 15px; border-radius: 50px; border: 1px solid #c3c3c3;'><span style='bottom: 7px; right: 0;left: 4.0px; font-size: 14px;text-align: center;position: relative;'>1</span></div> %@ </div> %@ %@",strBeginToFooterBegin, footerButton, footerContentId, strFooter, strFooterToEnd, jsOpenReadFooter];
+            NSLog(@"result 2: %@", result);
             return result;
         }
     }

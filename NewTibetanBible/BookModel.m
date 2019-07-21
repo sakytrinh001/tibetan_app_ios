@@ -46,7 +46,7 @@
     if ([usfmTag isEqualToString:USFM_MAJOR_TITLE]) {
         NSString *tmp = self.arrBookSeperateLine[i];
         NSString *stringNoIncludeUsfm = [LoadContent excludeUsfmTagFromLine:tmp];
-        NSString *result = [[NSString alloc] initWithFormat:@"<div class='%@' style='text-align: center; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none;ms-user-select: none;user-select: none;'><b> %@ </b></div>",kCSS_MAJOR_TITLE,stringNoIncludeUsfm ];
+        NSString *result = [[NSString alloc] initWithFormat:@"<div class='%@' style='text-align: center; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none;ms-user-select: none;user-select: none;'><br /><b> %@ </b></div>",kCSS_MAJOR_TITLE,stringNoIncludeUsfm ];
         self.arrBookSeperateLine[i] = result;
         return;
     }
@@ -70,32 +70,41 @@
         return;
     }
     
-    if ([usfmTag isEqualToString:USFM_SECTION_HEADING]) {
+    if ([usfmTag isEqualToString:USFM_SECTION_HEADING] || [usfmTag isEqualToString:USFM_LEFT_ALIGNE]) {
         NSString *tmp = self.arrBookSeperateLine[i];
         NSString *stringNoIncludeUsfm = [LoadContent excludeUsfmTagFromLine:tmp];
-        NSString *result = [[NSString alloc] initWithFormat:@"<br /><br /><span class='%@' style=' -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none;ms-user-select: none;user-select: none;'><b> %@ </b></span>",kCSS_SECTION_HEADING,stringNoIncludeUsfm ];
+        NSString *result = @"";
+        if ([usfmTag isEqualToString:USFM_LEFT_ALIGNE]){
+            result = [[NSString alloc] initWithFormat:@"<br /><span class='%@' style=' -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none;ms-user-select: none;user-select: none;'><b> %@ </b></span>",kCSS_SECTION_HEADING,stringNoIncludeUsfm ];
+        }else{
+            result = [[NSString alloc] initWithFormat:@"<br /><br /><span class='%@' style=' -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none;ms-user-select: none;user-select: none;'><b> %@ </b></span>",kCSS_SECTION_HEADING,stringNoIncludeUsfm ];
+        }
         self.arrBookSeperateLine[i] = result;
         return;
     }
     
-    if ([usfmTag isEqualToString:USFM_NORMAL_PARARAPH]  || [usfmTag isEqualToString:USFM_NORMAL_PARARAPHNEW]) {
+    if ([usfmTag isEqualToString:USFM_NORMAL_PARARAPH] || [usfmTag isEqualToString:USFM_NORMAL_PARARAPHNEW]) {
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"CHECK"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         _checkSpace = i;
         NSString *tmp = self.arrBookSeperateLine[i];
         NSString *stringNoIncludeUsfm = [LoadContent excludeUsfmTagFromLine:tmp];
         if ([stringNoIncludeUsfm isEqualToString:@""]) {
-            NSString *result = @"";
-            result = [[NSString alloc] initWithFormat:@"<br/> &nbsp &nbsp"];
+            NSString *result = [[NSString alloc] initWithFormat:@"<br/> &nbsp &nbsp"];
             self.arrBookSeperateLine[i] = result;
         } else {
-            NSString *result = [[NSString alloc] initWithFormat:@"<p> %@ </p>",stringNoIncludeUsfm];
+            NSString *result = @"";
+            if ([usfmTag isEqualToString:USFM_NORMAL_PARARAPHNEW]){
+                result = [[NSString alloc] initWithFormat:@"<br/> %@",stringNoIncludeUsfm];
+            }else{
+                result = [[NSString alloc] initWithFormat:@"<p> %@ </p>",stringNoIncludeUsfm];
+            }
             self.arrBookSeperateLine[i] = result;
         }
         return;
     }
     
-    if ([usfmTag isEqualToString:USFM_VERSE] || [usfmTag isEqualToString:USFM_LEFT_ALIGNE]) {
+    if ([usfmTag isEqualToString:USFM_VERSE]) {
         [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"CHECK"];
         NSString *tmp = self.arrBookSeperateLine[i];
         NSString *stringNoIncludeUsfm = [LoadContent excludeUsfmTagFromLine:tmp];

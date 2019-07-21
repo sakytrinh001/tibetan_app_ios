@@ -49,7 +49,8 @@ NSString *const lbForSeeMoreCell = @"ད་དུང་འཆར།";
     allBookNumber = (NSMutableArray*)[self.searchResult allKeys];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-//    [self searchBarSearchButtonClicked:_searchBar];
+    [self.tableView setEstimatedRowHeight:44];
+    [self.tableView setRowHeight:UITableViewAutomaticDimension];
     
     arrSearchSave = [[NSMutableArray alloc] init];
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"arrSearch"] != nil) {
@@ -57,7 +58,6 @@ NSString *const lbForSeeMoreCell = @"ད་དུང་འཆར།";
         NSCharacterSet *removeCharecter = [NSCharacterSet characterSetWithCharactersInString:@"()\n\""];
         NSString *strSearch = [[strResults componentsSeparatedByCharactersInSet:removeCharecter] componentsJoinedByString:@""];
         NSString* searchStringDidLoad = [strSearch stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//        arrHisSearch = (NSMutableArray*)[searchString componentsSeparatedByString:@","];
         NSMutableArray *arrReversed = (NSMutableArray*)[searchStringDidLoad componentsSeparatedByString:@","];
         arrHisSearch = (NSMutableArray*)[[arrReversed reverseObjectEnumerator] allObjects];
         check = 1;
@@ -122,7 +122,7 @@ NSString *const lbForSeeMoreCell = @"ད་དུང་འཆར།";
     if (check == 1) {
         
     }else{
-        CGRect sepFrame = CGRectMake(15, 29, (view.bounds.size.width - 30), 1);
+        CGRect sepFrame = CGRectMake(15, 34, (view.bounds.size.width - 30), 1);
         UIView *seperatorView =[[UIView alloc] initWithFrame:sepFrame];
         seperatorView.backgroundColor = [UIColor colorWithWhite:224.0/255.0 alpha:1.0];
         [view addSubview:seperatorView];
@@ -135,7 +135,6 @@ NSString *const lbForSeeMoreCell = @"ད་དུང་འཆར།";
     }else{
         NSDictionary *dicForSection = [self.dataForDisplay objectForKey:[NSString stringWithFormat:@"%ld", (long)section]];
         NSDictionary *dicForSectionOrigin = [self.searchResult objectForKey:[NSString stringWithFormat:@"%@", [allBookNumber objectAtIndex:section]]];
-//        NSDictionary *dicForSectionOrigin = [self.searchResult objectForKey:[NSString stringWithFormat:@"%ld",(long)section]];
         int numberOfRowInSection = 0;
         if ([dicForSection count] == DEFAULT_ROWS_SHOW && [dicForSection count] < [dicForSectionOrigin count]) {
             numberOfRowInSection = (int)[dicForSection count] + 1;
@@ -148,18 +147,6 @@ NSString *const lbForSeeMoreCell = @"ད་དུང་འཆར།";
         return numberOfRowInSection;
     }
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    int height = 0;
-    if (check != 1) {
-        height = 44;
-    }else{
-        height = 60;
-    }
-    return height;
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString* cellIdentifier = @"SearchCellIdentifier";
