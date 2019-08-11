@@ -104,7 +104,7 @@
     }
     
     if (tagOfBtn == 602) {
-        [self.delegate changeBackground:@"#F9FAE6"];//f3f4c9 mau cu
+        [self.delegate changeBackground:@"#CFB53B"];//F9FAE6 moi, f3f4c9 mau cu
     }
     
     if (tagOfBtn == 603) {

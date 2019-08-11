@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IntroAppViewController : UIViewController
 @property (nonatomic, retain) NSString *introS;
+@property (nonatomic, retain) NSString *sizeInt;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,11 +7,11 @@
 //
 
 #import "EditFontSizeTableViewController.h"
-NSString *const kExtraSmall = @"14";
-NSString *const kSmall = @"16";
-NSString *const kMedium = @"18";
-NSString *const kLarge = @"20";
-NSString *const kExtraLarge = @"22";
+NSString *const kExtraSmall = @"18";
+NSString *const kSmall = @"20";
+NSString *const kMedium = @"22";
+NSString *const kLarge = @"26";
+NSString *const kExtraLarge = @"28";
 //NSString *const kCurrentFontSize = @"CurrentFontSize";
 @interface EditFontSizeTableViewController ()
 

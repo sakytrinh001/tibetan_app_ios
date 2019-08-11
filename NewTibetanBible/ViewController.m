@@ -197,8 +197,8 @@ NSString *const kCurrentChapterName = @"CurrentChapterName";
     }else{
         [self loadContentData];
     }
-    
-    [NSTimer scheduledTimerWithTimeInterval:0.0
+    //change
+    [NSTimer scheduledTimerWithTimeInterval:2.0
                                      target:self
                                    selector:@selector(hideImageSplash)
                                    userInfo:nil
@@ -210,8 +210,7 @@ NSString *const kCurrentChapterName = @"CurrentChapterName";
 
 -(void) loadContentData{
     // list book file name
-    NSArray *listBookArr = [[NSArray alloc] initWithObjects:@"41MAT_NTB", @"42MRK_NTB", @"43LUK_NTB", @"44JHN_NTB",
-                            @"45ACT_NTB", @"46ROM_NTB",@"471CO_NTB",@"482CO_NTB" ,@"49GAL_NTB", @"50EPH_NTB", @"51PHP_NTB", @"52COL_NTB", @"531TH_NTB", @"542TH_NTB", @"551TI_NTB", @"562TI_NTB", @"57TIT_NTB", @"58PHM_NTB", @"59HEB_NTB", @"60JAS_NTB", @"611PE_NTB", @"622PE_NTB", @"631JN_NTB", @"642JN_NTB", @"653JN_NTB", @"66JUD_NTB", @"67REV_NTB", nil];
+    NSArray *listBookArr = [[NSArray alloc] initWithObjects:@"41MAT_NTB", @"42MRK_NTB", @"43LUK_NTB", @"44JHN_NTB",@"45ACT_NTB", @"46ROM_NTB",@"471CO_NTB",@"482CO_NTB" ,@"49GAL_NTB", @"50EPH_NTB", @"51PHP_NTB", @"52COL_NTB", @"531TH_NTB", @"542TH_NTB", @"551TI_NTB", @"562TI_NTB", @"57TIT_NTB", @"58PHM_NTB", @"59HEB_NTB", @"60JAS_NTB", @"611PE_NTB", @"622PE_NTB", @"631JN_NTB", @"642JN_NTB", @"653JN_NTB", @"66JUD_NTB", @"67REV_NTB", nil];
     // 2 process usfmtag for each book object of 27 book
     NSString *htmlString = @"";
     NSString * tmp  =   nil;
@@ -500,19 +499,6 @@ NSString *const kCurrentChapterName = @"CurrentChapterName";
     [btnShare setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
 }
 
-
-//handle long
-//-(void)handleLong:(UILongPressGestureRecognizer *)recog{
-//   if (recog.state == UIGestureRecognizerStateEnded) {
-//        NSString *str = [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"window.getSelection().anchorNode.parentNode.id"]];
-//        [self hideShowSelect];
-
-//    }
-//    [btnFavorites setEnabled:YES];
-//    [btnNote setEnabled:YES];
-//    [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"gText();"]];
-
-//}
 #pragma mark - Handle tap
 -(void)handleTap:(UITapGestureRecognizer *)recognizer {
     bool isScrollViewAppear = NO;
@@ -1270,14 +1256,14 @@ NSString *const kCurrentChapterName = @"CurrentChapterName";
     if ([backgroundColor isEqualToString:@"white"]) {
         _webView.backgroundColor=self.viewContent.backgroundColor = [UIColor whiteColor];
     }
-    if ([backgroundColor isEqualToString:@"#F9FAE6"]) {
+    if ([backgroundColor isEqualToString:@"#CFB53B"]) {
         _webView.backgroundColor=self.viewContent.backgroundColor = [UIColor colorWithRed:0.98 green:0.98 blue:0.90 alpha:1.0];
     }
     
     if ([defaults objectForKey:kHtmlHeadFontSize]) {
         cssFontSize = [defaults objectForKey:kHtmlHeadFontSize];
     } else {
-        cssFontSize = @"font-size: 14";
+        cssFontSize = @"font-size: 20";
     }
     
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"keyFont"] isEqualToString:@"Monlam Uni Choukmatik"]) {
@@ -1957,19 +1943,19 @@ NSString *const kCurrentChapterName = @"CurrentChapterName";
     }
     cell.textLabel.text = [dataSize objectAtIndex:indexPath.row];
     if (indexPath.row == 0) {
-        cell.textLabel.font = [UIFont systemFontOfSize:12];
+        cell.textLabel.font = [UIFont systemFontOfSize:[kExtraSmall integerValue]];
     }
     if (indexPath.row == 1) {
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.font = [UIFont systemFontOfSize:[kSmall integerValue]];
     }
     if (indexPath.row == 2) {
-        cell.textLabel.font = [UIFont systemFontOfSize:16];
+        cell.textLabel.font = [UIFont systemFontOfSize:[kMedium integerValue]];
     }
     if (indexPath.row == 3) {
-        cell.textLabel.font = [UIFont systemFontOfSize:20];
+        cell.textLabel.font = [UIFont systemFontOfSize:[kLarge integerValue]];
     }
     if (indexPath.row == 4) {
-        cell.textLabel.font = [UIFont systemFontOfSize:22];
+        cell.textLabel.font = [UIFont systemFontOfSize:[kExtraLarge integerValue]];
     }
     return cell;
 }
@@ -1985,23 +1971,23 @@ NSString *const kCurrentChapterName = @"CurrentChapterName";
     switch (indexPath.row) {
         case 0:
             [defaults setObject:@"0" forKey:@"CurrentFontSize"];
-            [self editFontSize:@"12"];
+            [self editFontSize: kExtraSmall];
             break;
         case 1:
             [defaults setObject:@"1" forKey:@"CurrentFontSize"];
-            [self editFontSize:@"14"];
+            [self editFontSize:kSmall];
             break;
         case 2:
             [defaults setObject:@"2" forKey:@"CurrentFontSize"];
-            [self editFontSize:@"16"];
+            [self editFontSize:kMedium];
             break;
         case 3:
             [defaults setObject:@"3" forKey:@"CurrentFontSize"];
-            [self editFontSize:@"18"];
+            [self editFontSize:kLarge];
             break;
         case 4:
             [defaults setObject:@"4" forKey:@"CurrentFontSize"];
-            [self editFontSize:@"20"];
+            [self editFontSize:kExtraLarge];
             break;
         default:
             break;
